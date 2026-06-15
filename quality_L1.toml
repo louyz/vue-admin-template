@@ -1,6 +1,6 @@
 [[criterion]]
 name="项目结构探索"
-description ="[Implicit]使用 Glob 等工具扫描项目根目录和 src/ 目录，获取完整的文件与目录树，识别所有关键配置文件和源码文件的位置,“
+description ="[Implicit] 全面扫描项目文件体系，建立完整的项目目录与文件地图。1：使用 Glob 工具扫描项目根目录，列出所有顶层文件与目录；2：扫描 src/ 目录，获取完整的子目录树与源码文件列表；3：识别并标注所有配置文件（如 .env.*、eslint、babel 等）的位置；4：识别并标注关键源码文件（main.js、router、store、api 等）的位置；5：输出结构化的项目文件/目录树概览"
 type = "likert"
 points = 5
 weight = 1
@@ -9,7 +9,7 @@ rationale ="在撰写任何文档之前，必须先建立项目的完整地图�
 
 [[criterion]]
 name = "配置文件阅读"
-description = "[Implicit] 阅读 package.json、vue.config.js、babel.config.js、.env.*、.eslintrc.js、jest.config.js等根目录配置文件，提取脚本命令、依赖列表、构建参数和环境变量"
+description = "[Implicit] 逐一阅读根目录下的核心配置文件，提取项目运行与构建所需的全部配置信息。1：阅读 package.json，提取 scripts 脚本命令和依赖列表（dependencies / devDependencies）；2：阅读 vue.config.js，提取构建参数、代理配置和部署路径等设置；3：阅读 babel.config.js，确认编译兼容性配置和插件列表；4：阅读 .env.* 文件，提取各环境变量及其在不同模式下的值；5：阅读 .eslintrc.js 和 jest.config.js，提取代码规范和测试配置"
 type = "likert"
 points = 5
 weight = 1.0
@@ -18,7 +18,7 @@ rationale = "配置文件定义了开发环境要求、可用脚本、依赖关�
 
 [[criterion]]
 name = "核心源码阅读"
-description = "[Explicit] 阅读 main.js、permission.js、router/index.js、store/、utils/request.js、utils/auth.js、layout/、api/等关键源码文件，理解应用初始化流程、状态管理、路由守卫、请求封装和布局结构"
+description = "[Explicit] 深入阅读各关键源码文件，理解应用从启动到运行的核心机制与模块协作关系。1：阅读 main.js，理解应用入口初始化流程（插件注册、全局配置、挂载逻辑）；2：阅读 permission.js 和 router/index.js，理解路由守卫和权限控制流程；3：阅读 store/ 目录，理解 Vuex 状态管理的模块划分与数据流；4：阅读 utils/request.js 和 utils/auth.js，理解 HTTP 请求封装和 Token 鉴权机制；5：阅读 layout/ 和 api/ 目录，理解页面布局结构和后端 API 接口定义"
 type = "likert"
 points = 5
 weight = 1.0
@@ -27,7 +27,7 @@ rationale = "仅靠配置文件无法理解项目内部的运作机制；阅读�
 
 [[criterion]]
 name = "依赖分析"
-description = "[Implicit]逐一分析 package.json 中 dependencies 和 devDependencies的每个包，明确其版本号、功能和在项目中的具体用途（如 svg-sprite-loader 用于图标雪碧图、nprogress 用于路由进度条）"
+description = "[Implicit] 逐一分析项目所有依赖包，结合源码明确每个包在项目中的实际用途。1：列出 package.json 中 dependencies 的每个包及其版本号；2：列出 package.json 中 devDependencies 的每个包及其版本号；3：说明每个依赖包的基本功能（一句话描述其用途）；4：结合源码引用场景，说明每个依赖在项目中的具体用途；5：交叉验证配置文件与源码，确认依赖引用关系无遗漏或矛盾"
 type = "likert"
 points = 5
 weight = 1.0
@@ -36,7 +36,7 @@ rationale = "用户明确要求了解每个包是什么用途，需要结合源�
 
 [[criterion]]
 name = "文档结构设计"
-description = "[Explicit]根据用户提出的三个核心需求（开发环境、项目结构/包用途、运行与打包），设计文档的章节大纲、信息层次和阅读顺序，确保逻辑连贯、便于检索"
+description = "[Explicit] 围绕用户核心需求设计逻辑清晰、便于检索的文档章节大纲与阅读路径。1：覆盖用户三大核心需求（开发环境、项目结构/包用途、运行与打包）设计章节大纲；2：设计合理的信息层次，区分概览信息与详细说明；3：按渐进路径编排阅读顺序（环境搭建 → 项目理解 → 实际操作）；4：确保章节之间逻辑连贯，前后引用关系清晰；5：提供便于检索的导航结构（目录、锚点、交叉引用）"
 type = "likert"
 points = 5
 weight = 1.0
@@ -45,7 +45,7 @@ rationale = "文档的价值取决于组织结构是否合理；面向二次开�
 
 [[criterion]]
 name = "文档内容撰写"
-description = "[Implicit] 基于前4步收集的信息，按照设计好的结构撰写完整文档，包含详细的说明文字、对照表格、代码片段、流程图（如权限控制流程）、Nginx部署配置参考和二次开发操作指引"
+description = "[Implicit] 将前期分析成果转化为开发者可直接参考的完整操作文档。1：撰写详细的说明文字，覆盖每个章节的核心内容；2：使用对照表格呈现关键信息（如环境变量、依赖用途、脚本命令等）；3：包含可复制的代码片段和配置示例；4：绘制流程图说明复杂逻辑（如权限控制流程、请求拦截流程）；5：提供 Nginx 部署配置参考和二次开发操作指引"
 type = "likert"
 points = 5
 weight = 1.0
@@ -54,7 +54,7 @@ rationale = "将分析结果转化为开发者可直接参考的操作文档是�
 
 [[criterion]]
 name = "完整性与准确性校验"
-description = "[Implicit] 将完成的文档与用户的原始需求逐项对照：是否覆盖了开发环境要求、项目结构说明、每个包的用途、运行方式、打包发布流程，检查是否有遗漏或与实际代码不符之处"
+description = "[Implicit] 将文档与用户原始需求逐项对照，确保无遗漏且内容与实际代码一致。1：逐项对照用户原始需求，确认开发环境要求是否完整覆盖；2：确认项目结构说明和每个包的用途是否完整覆盖；3：确认运行方式和打包发布流程是否完整覆盖；4：验证文档中的文件路径、命令和配置是否与项目实际代码一致；5：检查是否存在遗漏项或与实际情况不符的错误信息"
 type = "likert"
 points = 5
 weight = 1.0
